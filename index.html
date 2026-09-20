@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="YAJU PRODUCTIONS — Social Media Management and Graphic Design portfolio." />
+  <title>YAJU PRODUCTIONS | Creative Portfolio</title>
+  <style>
+    :root {
+      --bg: #f4faff;
+      --surface: #ffffff;
+      --text: #102a43;
+      --muted: #627d98;
+      --line: #d9eaf7;
+      --accent: #163a5f;
+      --blue: #8fd3ff;
+      --blue-soft: #dff3ff;
+      --radius: 22px;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), 92%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(247,247,244,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(230,230,225,.8);
+    }
+    nav {
+      min-height: 76px; display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+    }
+    .logo { font-weight: 900; letter-spacing: -.06em; font-size: 1.25rem; }
+    .logo span { font-weight: 400; color: var(--muted); }
+    .nav-links { display: flex; gap: 25px; font-size: .92rem; }
+    .nav-links a:hover { opacity: .55; }
+    .menu-btn { display: none; border: 0; background: none; font-size: 1.5rem; cursor: pointer; }
+    .hero { padding: 70px 0 70px; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: .16em; font-size: .72rem;
+      color: #4f9dca; font-weight: 700; margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(3.3rem, 8vw, 7.6rem);
+      line-height: .94; letter-spacing: -.085em; max-width: 980px;
+      font-weight: 900;
+    }
+    .hero-bottom {
+      margin-top: 30px; display: flex; justify-content: space-between; align-items: end; gap: 30px;
+    }
+    .hero-copy { max-width: 480px; color: var(--muted); font-size: 1.08rem; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      background: var(--accent); color: white; border-radius: 999px; padding: 14px 22px;
+      font-weight: 700; transition: transform .2s, opacity .2s;
+    }
+    .button:hover { transform: translateY(-3px); opacity: .85; }
+    .section { padding: 100px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; gap: 25px; margin-bottom: 42px; }
+    h2 { font-size: clamp(2.1rem, 5vw, 4.5rem); letter-spacing: -.065em; line-height: 1; }
+    .section-intro { color: var(--muted); max-width: 350px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .about-text { font-size: clamp(1.35rem, 2.4vw, 2.1rem); line-height: 1.25; letter-spacing: -.04em; }
+    .facts { display: grid; gap: 20px; }
+    .fact { border-top: 1px solid var(--line); padding-top: 14px; }
+    .fact strong { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+    .fact p { color: var(--muted); }
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .service {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 28px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .service-number { color: var(--muted); font-size: .8rem; }
+    .service h3 { font-size: 1.35rem; letter-spacing: -.035em; }
+    .service p { color: var(--muted); font-size: .92rem; margin-top: 12px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 25px; }
+    .filter {
+      cursor: pointer; border: 1px solid var(--line); background: transparent; border-radius: 999px;
+      padding: 9px 15px; font: inherit; font-size: .85rem;
+    }
+    .filter.active, .filter:hover { background: var(--accent); color: white; border-color: var(--accent); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .project { overflow: hidden; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+    .project-image {
+      aspect-ratio: 4/3; display: grid; place-items: center; padding: 25px;
+      background: linear-gradient(135deg, #dff3ff, #bfe7fb); color: #163a5f; text-align: center;
+    }
+    .project-image span { font-size: 2rem; font-weight: 900; letter-spacing: -.06em; }
+    .project-info { padding: 18px; }
+    .project-info h3 { font-size: 1.05rem; }
+    .project-info p { color: var(--muted); font-size: .88rem; }
+    .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .step { border-top: 1px solid var(--text); padding-top: 18px; }
+    .step b { font-size: .8rem; color: var(--muted); }
+    .step h3 { margin: 28px 0 8px; font-size: 1.25rem; }
+    .step p { color: var(--muted); font-size: .92rem; }
+    .contact {
+      background: linear-gradient(135deg, #163a5f, #205b86); color: white; border-radius: var(--radius); padding: 60px;
+      display: flex; justify-content: space-between; align-items: end; gap: 30px;
+    }
+    .contact h2 { max-width: 650px; }
+    .contact .button { background: white; color: var(--text); }
+    footer { padding: 28px 0; color: var(--muted); font-size: .85rem; display: flex; justify-content: space-between; gap: 20px; }
+
+
+
+    /* Light / dark theme */
+    body {
+      transition: background-color .35s ease, color .35s ease;
+    }
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--text);
+      display: inline-grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform .25s ease, background .3s ease, border-color .3s ease;
+    }
+    .theme-toggle:hover { transform: rotate(12deg) scale(1.05); }
+    body.dark {
+      --bg: #0b1724;
+      --surface: #10263a;
+      --text: #eef8ff;
+      --muted: #9ab0c1;
+      --line: #23445c;
+      --accent: #8fd3ff;
+      --blue: #8fd3ff;
+      --blue-soft: #173a52;
+    }
+    body.dark header {
+      background: rgba(11,23,36,.76);
+      border-color: rgba(63,103,130,.65);
+      box-shadow: 0 10px 35px rgba(0,0,0,.18);
+    }
+    body.dark .theme-toggle {
+      background: #173a52;
+      color: #dff3ff;
+      border-color: #315c76;
+    }
+    body.dark .service,
+    body.dark .project,
+    body.dark .stats {
+      background: #10263a;
+      border-color: #23445c;
+    }
+    body.dark .service:hover,
+    body.dark .project:hover {
+      border-color: #3e7191;
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+    }
+    body.dark .project-image {
+      background: linear-gradient(135deg,#173a52,#245d80);
+      color: #e8f7ff;
+    }
+    body.dark .project:nth-child(2n) .project-image {
+      background: linear-gradient(135deg,#183e57,#2e7098);
+    }
+    body.dark .project:nth-child(3n) .project-image {
+      background: linear-gradient(135deg,#14334a,#265f82);
+    }
+    body.dark .project:nth-child(4n) .project-image {
+      background: linear-gradient(135deg,#193c53,#337b9f);
+    }
+    body.dark .work-note {
+      background: rgba(16,38,58,.7);
+      border-color: #315c76;
+    }
+    body.dark .stat strong { color: #8fd3ff; }
+    body.dark .marquee {
+      background: rgba(23,58,82,.5);
+      border-color: #23445c;
+    }
+    body.dark .modal-card {
+      background: #10263a;
+      border-color: #315c76;
+    }
+    body.dark .modal-visual {
+      background: linear-gradient(135deg,#173a52,#2d739a);
+      color: #eef8ff;
+    }
+    body.dark .modal-close {
+      background: #10263a;
+      color: #eef8ff;
+      border-color: #315c76;
+    }
+    body.dark .case-meta span {
+      background: #173a52;
+      color: #bde6fb;
+    }
+    body.dark .featured-card {
+      border-color: #315c76;
+      box-shadow: none;
+    }
+    body.dark .featured-card:nth-child(2) {
+      background: linear-gradient(145deg,#081522,#245d80);
+    }
+    body.dark .hero-kicker { color: #a9c4d5; }
+    body.dark .section-label { color: #8fd3ff; }
+    body.dark .section:nth-of-type(odd) .section-head h2 {
+      text-decoration-color: rgba(143,211,255,.35);
+    }
+    body.dark .contact {
+      background: linear-gradient(135deg,#071522,#173a52);
+    }
+    body.dark .contact .button {
+      background: #eaf8ff;
+      color: #10263a;
+    }
+    body.dark .project::after {
+      background: rgba(16,38,58,.88);
+      color: #dff3ff;
+      border-color: #315c76;
+    }
+    body.dark body::before {
+      background: rgba(79,157,202,.12);
+    }
+
+    /* Contemporary editorial / creative-studio layer */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      width: 0%;
+      height: 3px;
+      background: #8fd3ff;
+      z-index: 100;
+      transition: width .08s linear;
+    }
+    header {
+      margin: 14px auto 0;
+      width: min(1120px, 94%);
+      border: 1px solid rgba(217,234,247,.9);
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 35px rgba(16,42,67,.06);
+    }
+    header .container { width: 100%; }
+    nav { padding: 0 20px; min-height: 64px; }
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero h1 {
+      font-size: clamp(3.2rem, 6.7vw, 6.4rem);
+      max-width: 850px;
+      text-wrap: balance;
+    }
+    .hero h1 .accent-word { color: #4f9dca; }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 22px;
+      color: #4f6f88;
+      font-size: .82rem;
+      font-weight: 650;
+    }
+    .hero-kicker::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #5cc48d;
+      box-shadow: 0 0 0 6px rgba(92,196,141,.13);
+      animation: pulse 2s infinite;
+    }
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(223,243,255,.38);
+      white-space: nowrap;
+    }
+    .marquee-track {
+      width: max-content;
+      display: flex;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee span {
+      padding: 17px 28px;
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: #35627f;
+    }
+    .marquee span::after { content: "✦"; margin-left: 56px; color: #79bde2; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #4f9dca;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .7rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+    .section-label::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: #8fd3ff;
+    }
+    .featured-work {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .featured-card {
+      min-height: 440px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #dff3ff, #8fd3ff);
+      border: 1px solid #c7e7f8;
+      display: flex;
+      align-items: end;
+      padding: 28px;
+      transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s;
+    }
+    .featured-card:nth-child(2) {
+      background: linear-gradient(145deg, #163a5f, #4f9dca);
+    }
+    .featured-card::before {
+      content: "";
+      position: absolute;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.55);
+      top: 55px; right: 50px;
+      animation: orbit 10s linear infinite;
+    }
+    .featured-card::after {
+      content: "";
+      position: absolute;
+      width: 110px; height: 110px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.22);
+      transform: rotate(24deg);
+      top: 105px; right: 105px;
+      backdrop-filter: blur(8px);
+      animation: shapeFloat 5s ease-in-out infinite;
+    }
+    .featured-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(22,58,95,.14);
+    }
+    .featured-content { position: relative; z-index: 2; }
+    .featured-content small {
+      text-transform: uppercase; letter-spacing: .12em; font-weight: 800;
+      opacity: .65;
+    }
+    .featured-content h3 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      letter-spacing: -.06em;
+      line-height: .95;
+      margin-top: 8px;
+      max-width: 500px;
+    }
+    .featured-card:nth-child(2) { color: white; }
+    .featured-card:nth-child(2) .featured-content small { color: #dff3ff; }
+    .work-note {
+      margin: 0 0 24px;
+      padding: 16px 20px;
+      border: 1px dashed #b8d9ec;
+      border-radius: 16px;
+      color: #627d98;
+      background: rgba(255,255,255,.55);
+      font-size: .88rem;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: white;
+      margin-top: 60px;
+    }
+    .stat {
+      padding: 28px;
+      border-right: 1px solid var(--line);
+    }
+    .stat:last-child { border-right: 0; }
+    .stat strong {
+      display: block;
+      font-size: 2.6rem;
+      line-height: 1;
+      letter-spacing: -.06em;
+      color: #163a5f;
+    }
+    .stat span { display: block; margin-top: 8px; color: var(--muted); font-size: .84rem; }
+    .magnetic { transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    @keyframes pulse { 50% { transform: scale(1.35); opacity: .6; } }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @keyframes shapeFloat {
+      0%,100% { transform: translateY(0) rotate(24deg); }
+      50% { transform: translateY(-18px) rotate(34deg); }
+    }
+    @media (max-width: 800px) {
+      header { width: 96%; margin-top: 8px; }
+      .hero { min-height: 76vh; }
+      .featured-work { grid-template-columns: 1fr; }
+      .featured-card { min-height: 330px; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: 0; border-bottom: 1px solid var(--line); }
+      .stat:last-child { border-bottom: 0; }
+    }
+    .contact-form-wrap { align-items: flex-start; gap: 55px; }
+    .contact-copy { flex: 1 1 40%; }
+    .contact-copy p { max-width: 430px; color: #d7e5ef; margin-top: 18px; line-height: 1.7; }
+    .inquiry-form { flex: 1 1 52%; width: 100%; display: grid; gap: 16px; }
+    .inquiry-form label { display: grid; gap: 8px; }
+    .inquiry-form label > span { color: #dceaf3; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .inquiry-form small { font-weight: 500; opacity: .65; text-transform: none; letter-spacing: 0; }
+    .inquiry-form input, .inquiry-form select, .inquiry-form textarea { width: 100%; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.07); color: #fff; border-radius: 14px; padding: 14px 15px; font: inherit; outline: none; transition: border-color .25s, background .25s, transform .25s; }
+    .inquiry-form select { appearance: auto; }
+    .inquiry-form option { color: #102a43; background: #fff; }
+    .inquiry-form input::placeholder, .inquiry-form textarea::placeholder { color: rgba(255,255,255,.55); }
+    .inquiry-form input:focus, .inquiry-form select:focus, .inquiry-form textarea:focus { border-color: #8fd3ff; background: rgba(255,255,255,.1); transform: translateY(-1px); }
+    .inquiry-form textarea { resize: vertical; min-height: 110px; }
+    .inquiry-form .button { border: 0; cursor: pointer; justify-self: start; margin-top: 3px; }
+    @media (max-width: 800px) { .contact-form-wrap { gap: 30px; } .inquiry-form { width: 100%; } }
+
+
+    @media (max-width: 800px) {
+      .marquee span {
+        padding: 14px 18px;
+        font-size: .68rem;
+        letter-spacing: .09em;
+      }
+      .marquee span::after { margin-left: 28px; }
+      .marquee-track { animation-duration: 16s; }
+    }
+
+    @media (max-width: 480px) {
+      .marquee span {
+        padding: 13px 14px;
+        font-size: .62rem;
+        letter-spacing: .07em;
+      }
+      .marquee span::after { margin-left: 20px; }
+      .marquee-track { animation-duration: 14s; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track, .featured-card::before, .featured-card::after { animation: none !important; }
+    }
+
+
+    .project { cursor: pointer; position: relative; }
+    .project::after {
+      content: "View project ↗";
+      position: absolute; right: 16px; top: 16px;
+      background: rgba(255,255,255,.82); color: #163a5f;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 999px; padding: 7px 11px; font-size: .72rem;
+      font-weight: 800; opacity: 0; transform: translateY(-5px);
+      transition: .3s ease; backdrop-filter: blur(8px);
+    }
+    .project:hover::after { opacity: 1; transform: translateY(0); }
+    .project-image { position: relative; }
+    .project:nth-child(2n) .project-image { background: linear-gradient(135deg,#eaf8ff,#b9e4fa); }
+    .project:nth-child(3n) .project-image { background: linear-gradient(135deg,#d8edf9,#9bcfea); }
+    .project:nth-child(4n) .project-image { background: linear-gradient(135deg,#edf7fb,#c9e9f8); }
+    .modal {
+      position: fixed; inset: 0; z-index: 200;
+      display: grid; place-items: center; padding: 24px;
+      background: rgba(10,30,48,.58); backdrop-filter: blur(16px);
+      opacity: 0; pointer-events: none; transition: opacity .3s ease;
+    }
+    .modal.open { opacity: 1; pointer-events: auto; }
+    .modal-card {
+      width: min(900px, 100%); max-height: 90vh; overflow: auto;
+      background: #fff; border-radius: 28px; border: 1px solid #d9eaf7;
+      box-shadow: 0 30px 100px rgba(0,0,0,.2);
+      transform: translateY(25px) scale(.98); transition: transform .35s ease;
+    }
+    .modal.open .modal-card { transform: translateY(0) scale(1); }
+    .modal-visual {
+      min-height: 350px; display: grid; place-items: center; padding: 40px;
+      background: linear-gradient(135deg,#dff3ff,#8fd3ff); color: #163a5f;
+    }
+    .modal-visual strong { font-size: clamp(3rem,8vw,7rem); line-height: .85; letter-spacing: -.08em; text-align:center; }
+    .modal-body { padding: 32px; }
+    .modal-body small { color:#4f9dca; text-transform:uppercase; letter-spacing:.13em; font-weight:800; }
+    .modal-body h3 { font-size: clamp(2rem,5vw,4rem); letter-spacing:-.06em; line-height:1; margin:10px 0 14px; }
+    .modal-body p { color:#627d98; max-width:650px; }
+    .modal-close {
+      position:absolute; top:24px; right:24px; width:44px; height:44px;
+      border:1px solid rgba(255,255,255,.6); border-radius:50%;
+      background:rgba(255,255,255,.9); color:#163a5f; font-size:1.25rem; cursor:pointer;
+    }
+    .case-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+    .case-meta span { padding:8px 12px; border-radius:999px; background:#edf8ff; color:#35627f; font-size:.75rem; font-weight:750; }
+
+    /* Motion & interactive polish */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(143, 211, 255, .20);
+      filter: blur(70px);
+      top: 8vh;
+      right: -170px;
+      pointer-events: none;
+      z-index: -1;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(32, 91, 134, .08);
+      filter: blur(65px);
+      bottom: -120px;
+      left: -100px;
+      pointer-events: none;
+      z-index: -1;
+      animation: drift 15s ease-in-out infinite alternate-reverse;
+    }
+    .hero { position: relative; overflow: hidden; }
+    .hero::after {
+      content: "✦";
+      position: absolute;
+      right: 7%;
+      top: 24%;
+      font-size: 5rem;
+      color: #8fd3ff;
+      opacity: .55;
+      animation: float 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    h1 { animation: heroIn .9s cubic-bezier(.2,.8,.2,1) both; }
+    .hero .eyebrow { animation: fadeUp .7s .05s both; }
+    .hero-copy { animation: fadeUp .8s .2s both; }
+    .hero .button { animation: fadeUp .8s .3s both; }
+    .service, .project, .step {
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+    }
+    .service:hover, .project:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 18px 45px rgba(22,58,95,.10);
+      border-color: #b8ddf3;
+    }
+    .project-image {
+      overflow: hidden;
+      transition: transform .45s cubic-bezier(.2,.8,.2,1);
+    }
+    .project:hover .project-image {
+      transform: scale(1.025);
+    }
+    .project-image span {
+      transition: transform .45s cubic-bezier(.2,.8,.2,1);
+    }
+    .project:hover .project-image span {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .button {
+      box-shadow: 0 8px 22px rgba(22,58,95,.14);
+    }
+    .button:hover {
+      box-shadow: 0 14px 30px rgba(22,58,95,.20);
+    }
+    .logo {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      min-width: 172px;
+      height: 42px;
+      perspective: 900px;
+      transform-style: preserve-3d;
+      transition: transform .3s ease;
+    }
+    .logo:hover {
+      transform: translateY(-1px);
+    }
+    .logo-text, .logo-mark {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-origin: center center;
+      transition: transform .8s cubic-bezier(.22,.61,.36,1), opacity .15s ease;
+    }
+    .logo-text {
+      opacity: 1;
+      transform: translateY(-50%) rotateY(0deg);
+    }
+    .logo-mark {
+      opacity: 0;
+      transform: translateY(-50%) rotateY(-180deg);
+      width: 42px;
+      height: 42px;
+      padding: 5px;
+      border-radius: 12px;
+      background: #000;
+      object-fit: contain;
+    }
+    .logo.scrolled .logo-text {
+      opacity: 0;
+      transform: translateY(-50%) rotateY(180deg);
+    }
+    .logo.scrolled .logo-mark {
+      opacity: 1;
+      transform: translateY(-50%) rotateY(0deg);
+    }
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 100%;
+      height: 1.5px;
+      background: #4f9dca;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .3s ease;
+    }
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section:nth-of-type(odd) .section-head h2 {
+      text-decoration: underline;
+      text-decoration-color: rgba(143,211,255,.6);
+      text-decoration-thickness: 8px;
+      text-underline-offset: 8px;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(35px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(8deg); }
+    }
+    @keyframes drift {
+      from { transform: translate3d(0,0,0) scale(1); }
+      to { transform: translate3d(-35px,25px,0) scale(1.08); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 800px) {
+      .nav-links { display: none; position: absolute; left: 0; right: 0; top: 76px; padding: 22px 4%; background: var(--bg); border-bottom: 1px solid var(--line); flex-direction: column; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .hero { padding: 70px 0 60px; }
+      .hero::after { display: none; }
+      .hero-kicker { margin-top: 20px; }
+      .hero-bottom, .section-head, .contact { flex-direction: column; align-items: start; }
+      .about-grid, .services, .portfolio-grid { grid-template-columns: 1fr; }
+      .process { grid-template-columns: repeat(2, 1fr); }
+      .contact { padding: 35px; }
+    }
+    @media (max-width: 480px) {
+      .logo { min-width: 42px; width: 42px; }
+      .logo-mark { width: 42px; height: 42px; }
+      .process { grid-template-columns: 1fr; }
+      h1 { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#top" aria-label="YAJU PRODUCTIONS home">
+          <span class="logo-text">YAJU <span>PRODUCTIONS</span></span>
+          <img class="logo-mark" src="yaju-logo.png" alt="YAJU logo" />
+        </a>
+        <div style="display:flex;align-items:center;gap:10px;"><button class="theme-toggle" id="themeToggle" aria-label="Switch theme" title="Switch theme">☾</button><button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">☰</button></div>
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="eyebrow">Creative portfolio / Social media + design</div>
+      <h1>Making your ideas<br><span class="accent-word">impossible to scroll past.</span></h1><div class="hero-kicker">Available for creative projects</div>
+      <div style="margin-top:22px;"><a class="button magnetic" href="#work">View my work ↗</a></div>
+      <div class="hero-bottom">
+        <p class="hero-copy">I’m Junelle Mark Subido, the creative behind YAJU PRODUCTIONS. I create thoughtful content, strong visual identities, and social media experiences that help brands stand out.</p>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Services">
+      <div class="marquee-track">
+        <span>Social Media Management</span><span>Graphic Design</span><span>Content Creation</span><span>Brand Identity</span><span>Creative Direction</span>
+        <span>Social Media Management</span><span>Graphic Design</span><span>Content Creation</span><span>Brand Identity</span><span>Creative Direction</span>
+      </div>
+    </div>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head"><div><div class="section-label">01 / About</div><h2>About me</h2></div><p class="section-intro">A creative partner for brands, businesses, and ideas that deserve to be seen.</p></div>
+        <div class="about-grid reveal">
+          <p class="about-text">I combine strategy, storytelling, and design to turn ideas into engaging digital content. From planning social media posts to creating polished graphics, my goal is to make every brand interaction feel intentional.</p>
+          <div class="facts">
+            <div class="fact"><strong>Based on creativity</strong><p>Clean visuals, purposeful layouts, and content with direction.</p></div>
+            <div class="fact"><strong>Focused on consistency</strong><p>Helping brands build a recognizable and professional online presence.</p></div>
+            <div class="fact"><strong>Always learning</strong><p>Exploring fresh formats, trends, and creative solutions.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head"><div><div class="section-label">02 / Services</div><h2>What I do</h2></div><p class="section-intro">Flexible creative services designed around your goals and audience.</p></div>
+        <div class="services reveal">
+          <article class="service"><span class="service-number">01 / Strategy</span><div><h3>Social Media Management</h3><p>Content planning, scheduling, captions, community support, and consistent brand communication.</p></div></article>
+          <article class="service"><span class="service-number">02 / Content</span><div><h3>Content Creation</h3><p>Engaging post concepts, carousels, short-form content ideas, and campaign materials.</p></div></article>
+          <article class="service"><span class="service-number">03 / Design</span><div><h3>Graphic Design</h3><p>Social graphics, posters, promotional materials, layouts, and visual assets.</p></div></article>
+          <article class="service"><span class="service-number">04 / Identity</span><div><h3>Branding & Visual Identity</h3><p>Visual direction, color systems, typography, and cohesive brand presentation.</p></div></article>
+          <article class="service"><span class="service-number">05 / Campaigns</span><div><h3>Marketing Materials</h3><p>Creative assets for launches, promotions, announcements, and digital campaigns.</p></div></article>
+          <article class="service"><span class="service-number">06 / Support</span><div><h3>Creative Consultation</h3><p>Ideas and practical guidance to make your content more focused and visually effective.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head"><div><div class="section-label">03 / Portfolio</div><h2>My Work</h2></div><p class="section-intro">Replace these placeholders with your actual projects, mockups, and client work.</p></div>
+        <div class="work-note">Your portfolio images can replace these featured placeholders later. The layout is already designed to showcase your strongest two projects first.</div>
+        <div class="featured-work reveal">
+          <article class="featured-card">
+            <div class="featured-content"><small>Featured project / 01</small><h3>My signature campaign.</h3></div>
+          </article>
+          <article class="featured-card">
+            <div class="featured-content"><small>Featured project / 02</small><h3>My visual identity.</h3></div>
+          </article>
+        </div>
+        <div class="filters">
+          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="social">Social media</button><button class="filter" data-filter="design">Graphic design</button><button class="filter" data-filter="branding">Branding</button>
+        </div>
+        <div class="portfolio-grid reveal">
+          <article class="project" data-category="social" data-title="Social Media Campaign" data-type="Social Media" data-description="A strategic social campaign combining clear messaging, consistent visual direction, and engaging content designed for digital audiences."><div class="project-image"><span>YOUR<br>PROJECT 01</span></div><div class="project-info"><h3>Social Media Campaign</h3><p>Replace with a campaign description.</p></div></article>
+          <article class="project" data-category="design" data-title="Promotional Graphic" data-type="Graphic Design" data-description="A promotional visual built to communicate an offer quickly while keeping the brand presentation clean, memorable, and consistent."><div class="project-image"><span>YOUR<br>PROJECT 02</span></div><div class="project-info"><h3>Promotional Graphic</h3><p>Replace with a project description.</p></div></article>
+          <article class="project" data-category="branding" data-title="Brand Identity" data-type="Branding" data-description="A visual identity direction exploring typography, color, composition, and a cohesive look that can carry across digital touchpoints."><div class="project-image"><span>YOUR<br>PROJECT 03</span></div><div class="project-info"><h3>Brand Identity</h3><p>Replace with a project description.</p></div></article>
+          <article class="project" data-category="social" data-title="Content Series" data-type="Content Creation" data-description="A connected series of social assets designed to make a brand feel consistent across multiple posts and formats."><div class="project-image"><span>YOUR<br>PROJECT 04</span></div><div class="project-info"><h3>Content Series</h3><p>Replace with a project description.</p></div></article>
+          <article class="project" data-category="design" data-title="Poster Design" data-type="Graphic Design" data-description="A bold promotional composition designed to create hierarchy, grab attention, and communicate key information at a glance."><div class="project-image"><span>YOUR<br>PROJECT 05</span></div><div class="project-info"><h3>Poster Design</h3><p>Replace with a project description.</p></div></article>
+          <article class="project" data-category="branding" data-title="Visual Direction" data-type="Creative Direction" data-description="A creative direction concept bringing together visual references, layout decisions, typography, and tone into one recognizable system."><div class="project-image"><span>YOUR<br>PROJECT 06</span></div><div class="project-info"><h3>Visual Direction</h3><p>Replace with a project description.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-head"><div><div class="section-label">04 / Process</div><h2>My process</h2></div><p class="section-intro">Simple, collaborative, and focused on making good work.</p></div>
+        <div class="process reveal">
+          <div class="step"><b>01</b><h3>Discover</h3><p>Understand your brand, audience, goals, and creative direction.</p></div>
+          <div class="step"><b>02</b><h3>Plan</h3><p>Build concepts, content ideas, references, and a clear direction.</p></div>
+          <div class="step"><b>03</b><h3>Create</h3><p>Design, write, refine, and prepare content for delivery.</p></div>
+          <div class="step"><b>04</b><h3>Deliver</h3><p>Present the final work and make revisions when needed.</p></div>
+        </div>
+        <div class="stats reveal">
+          <div class="stat"><strong>01</strong><span>Creative direction</span></div>
+          <div class="stat"><strong>02</strong><span>Design + content</span></div>
+          <div class="stat"><strong>∞</strong><span>Ideas worth exploring</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact contact-form-wrap">
+          <div class="contact-copy">
+            <div class="eyebrow" style="color:#aaa">Have a project in mind?</div>
+            <h2>Let’s make something people remember.</h2>
+            <p>Tell me a little about what you have in mind, and I’ll get back to you.</p>
+          </div>
+          <form class="inquiry-form" action="mailto:yajuproductions@gmail.com" method="post" enctype="text/plain">
+            <label><span>Name</span><input type="text" name="Name" placeholder="Your name" required></label>
+            <label><span>Email</span><input type="email" name="Email" placeholder="you@example.com" required></label>
+            <label><span>What can I help you with?</span><select name="Service" required><option value="" disabled selected>Choose a service</option><option>Social Media Management</option><option>Graphic Design</option><option>Content Creation</option><option>Branding & Visual Identity</option><option>Marketing Materials</option><option>Creative Consultation</option><option>Something else in mind</option></select></label>
+            <label><span>Tell me more <small>(optional)</small></span><textarea name="Message" rows="4" placeholder="A few details about your project..."></textarea></label>
+            <button class="button magnetic" type="submit">Send inquiry ↗</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-label="Project details">
+    <button class="modal-close" id="modalClose" aria-label="Close project">×</button>
+    <div class="modal-card">
+      <div class="modal-visual"><strong id="modalVisual">PROJECT</strong></div>
+      <div class="modal-body">
+        <small id="modalType">PROJECT TYPE</small>
+        <h3 id="modalTitle">Project title</h3>
+        <p id="modalDescription">Project description</p>
+        <div class="case-meta"><span>Creative direction</span><span>Design</span><span>Content</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container">
+    <span>© <span id="year"></span> YAJU PRODUCTIONS</span>
+    <span>Social Media Management · Graphic Design</span>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+    const filters = document.querySelectorAll('.filter');
+    const projects = document.querySelectorAll('.project');
+    filters.forEach(button => button.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      const category = button.dataset.filter;
+      projects.forEach(project => project.style.display = category === 'all' || project.dataset.category === category ? '' : 'none');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+
+
+    const modal = document.getElementById('projectModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalType = document.getElementById('modalType');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalVisual = document.getElementById('modalVisual');
+
+    document.querySelectorAll('.project').forEach(project => {
+      project.addEventListener('click', () => {
+        modalTitle.textContent = project.dataset.title;
+        modalType.textContent = project.dataset.type;
+        modalDescription.textContent = project.dataset.description;
+        modalVisual.textContent = project.dataset.title.split(' ').slice(0,2).join(' ').toUpperCase();
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('yaju-theme');
+    if (savedTheme === 'dark') document.body.classList.add('dark');
+
+    function updateThemeIcon() {
+      const isDark = document.body.classList.contains('dark');
+      themeToggle.textContent = isDark ? '☀' : '☾';
+      themeToggle.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+      themeToggle.setAttribute('aria-label', themeToggle.title);
+    }
+    updateThemeIcon();
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('yaju-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+      updateThemeIcon();
+    });
+
+    const progress = document.getElementById('scrollProgress');
+    const siteLogo = document.querySelector('.logo');
+    function handleScroll() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = max > 0 ? `${(window.scrollY / max) * 100}%` : '0%';
+      siteLogo.classList.toggle('scrolled', window.scrollY > 70);
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    document.querySelectorAll('.magnetic').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * .08;
+        const y = (e.clientY - r.top - r.height / 2) * .08;
+        el.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      el.addEventListener('mouseleave', () => el.style.transform = '');
+    });
+
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach(item => observer.observe(item));
+
+  </script>
+</body>
+</html>
