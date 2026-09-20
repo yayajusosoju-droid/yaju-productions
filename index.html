@@ -609,6 +609,33 @@
     .logo-text {
       opacity: 1;
       transform: translateY(-50%) rotateY(0deg);
+      white-space: nowrap;
+      display: inline-block;
+      font-size: clamp(.92rem, 1.8vw, 1.25rem);
+      font-weight: 900;
+      letter-spacing: -.045em;
+      background: linear-gradient(110deg, #102a43 0%, #4f9dca 28%, #ffffff 50%, #4f9dca 72%, #102a43 100%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: logoShine 4s linear infinite;
+    }
+    .logo-text span {
+      color: inherit;
+      font-weight: 400;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes logoShine {
+      0% { background-position: 220% center; }
+      100% { background-position: -220% center; }
+    }
+    body.dark .logo-text {
+      background: linear-gradient(110deg, #ffffff 0%, #8fd3ff 30%, #ffffff 50%, #8fd3ff 70%, #ffffff 100%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .logo-mark {
       opacity: 0;
@@ -701,7 +728,135 @@
       .process { grid-template-columns: 1fr; }
       h1 { font-size: 3.5rem; }
     }
-  </style>
+  
+    /* ===== Premium interaction layer ===== */
+    html { scroll-behavior: smooth; }
+
+    .custom-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 14px;
+      height: 14px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition:
+        width .25s cubic-bezier(.2,.8,.2,1),
+        height .25s cubic-bezier(.2,.8,.2,1),
+        background .25s ease,
+        opacity .25s ease,
+        border-color .25s ease;
+      mix-blend-mode: difference;
+    }
+
+    .custom-cursor span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(.6);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      color: #fff;
+      opacity: 0;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    body.cursor-ready .custom-cursor { opacity: 1; }
+
+    body.cursor-hover .custom-cursor {
+      width: 58px;
+      height: 58px;
+      background: #8fd3ff;
+      border-color: #8fd3ff;
+      mix-blend-mode: normal;
+    }
+
+    body.cursor-hover .custom-cursor span {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Scroll reveal */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .8s cubic-bezier(.2,.8,.2,1),
+        transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered project/service entrances */
+    .project.reveal-on-scroll:nth-child(2),
+    .service.reveal-on-scroll:nth-child(2) { transition-delay: .08s; }
+
+    .project.reveal-on-scroll:nth-child(3),
+    .service.reveal-on-scroll:nth-child(3) { transition-delay: .16s; }
+
+    .project.reveal-on-scroll:nth-child(4),
+    .service.reveal-on-scroll:nth-child(4) { transition-delay: .24s; }
+
+    .project.reveal-on-scroll:nth-child(5),
+    .service.reveal-on-scroll:nth-child(5) { transition-delay: .32s; }
+
+    /* More cinematic project interaction */
+    .project {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .project-image img {
+      transition: transform .7s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .project:hover .project-image img {
+      transform: scale(1.06);
+    }
+
+    .project-info h3 {
+      transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .project:hover .project-info h3 {
+      transform: translateX(5px);
+    }
+
+    /* Magnetic controls */
+    .magnetic {
+      will-change: transform;
+      transition: transform .2s cubic-bezier(.2,.8,.2,1);
+    }
+
+    /* Subtle hero depth */
+    .hero-copy {
+      transition: transform .15s ease-out;
+      will-change: transform;
+    }
+
+    @media (pointer: coarse) {
+      .custom-cursor { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .custom-cursor { display: none; }
+    }
+
+</style>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -768,7 +923,6 @@
     <section class="section" id="work">
       <div class="container">
         <div class="section-head"><div><div class="section-label">03 / Portfolio</div><h2>My Work</h2></div><p class="section-intro">Replace these placeholders with your actual projects, mockups, and client work.</p></div>
-        <div class="work-note">Your portfolio images can replace these featured placeholders later. The layout is already designed to showcase your strongest two projects first.</div>
         <div class="featured-work reveal">
           <article class="featured-card">
             <div class="featured-content"><small>Featured project / 01</small><h3>My signature campaign.</h3></div>
@@ -938,5 +1092,102 @@
     revealItems.forEach(item => observer.observe(item));
 
   </script>
+
+  <!-- Custom interactive cursor -->
+  <div class="custom-cursor" aria-hidden="true">
+    <span>VIEW</span>
+  </div>
+
+
+<script>
+(function () {
+  'use strict';
+
+  /* Custom cursor */
+  const cursor = document.querySelector('.custom-cursor');
+
+  if (cursor && window.matchMedia('(pointer: fine)').matches) {
+    document.body.classList.add('cursor-ready');
+
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }, { passive: true });
+
+    function moveCursor() {
+      cursorX += (mouseX - cursorX) * 0.18;
+      cursorY += (mouseY - cursorY) * 0.18;
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      requestAnimationFrame(moveCursor);
+    }
+    moveCursor();
+
+    document.querySelectorAll('.project, .button, .filter').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        document.body.classList.toggle('cursor-hover', el.classList.contains('project'));
+      });
+      el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('cursor-hover');
+      });
+    });
+  }
+
+  /* Scroll reveal */
+  const revealTargets = document.querySelectorAll(
+    '.section-head, .about-grid, .service, .project, .process, .stats, .contact, .featured-work, .work-note'
+  );
+
+  revealTargets.forEach((el) => el.classList.add('reveal-on-scroll'));
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealTargets.forEach((el) => observer.observe(el));
+  } else {
+    revealTargets.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  /* Magnetic buttons */
+  document.querySelectorAll('.magnetic').forEach((el) => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - (rect.left + rect.width / 2)) * 0.12;
+      const y = (e.clientY - (rect.top + rect.height / 2)) * 0.12;
+      el.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+
+  /* Give existing buttons the magnetic effect */
+  document.querySelectorAll('.button').forEach((el) => {
+    el.classList.add('magnetic');
+  });
+
+  /* Gentle mouse depth on hero copy */
+  const heroCopy = document.querySelector('.hero-copy');
+  if (heroCopy && window.matchMedia('(pointer: fine)').matches) {
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 5;
+      const y = (e.clientY / window.innerHeight - 0.5) * 5;
+      heroCopy.style.transform = `translate(${x}px, ${y}px)`;
+    }, { passive: true });
+  }
+})();
+</script>
+
 </body>
 </html>
