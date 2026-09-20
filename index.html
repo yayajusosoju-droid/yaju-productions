@@ -922,25 +922,25 @@
 
     <section class="section" id="work">
       <div class="container">
-        <div class="section-head"><div><div class="section-label">03 / Portfolio</div><h2>My Work</h2></div><p class="section-intro">Replace these placeholders with your actual projects, mockups, and client work.</p></div>
+        <div class="section-head"><div><div class="section-label">03 / Portfolio</div><h2>Projects Uploading Soon</h2></div><p class="section-intro">Projects uploading soon.</p></div>
         <div class="featured-work reveal">
           <article class="featured-card">
-            <div class="featured-content"><small>Featured project / 01</small><h3>My signature campaign.</h3></div>
+            <div class="featured-content"><small>Featured project / 01</small><h3>Projects Uploading Soon</h3></div>
           </article>
           <article class="featured-card">
-            <div class="featured-content"><small>Featured project / 02</small><h3>My visual identity.</h3></div>
+            <div class="featured-content"><small>Featured project / 02</small><h3>Projects Uploading Soon</h3></div>
           </article>
         </div>
         <div class="filters">
           <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="social">Social media</button><button class="filter" data-filter="design">Graphic design</button><button class="filter" data-filter="branding">Branding</button>
         </div>
         <div class="portfolio-grid reveal">
-          <article class="project" data-category="social" data-title="Social Media Campaign" data-type="Social Media" data-description="A strategic social campaign combining clear messaging, consistent visual direction, and engaging content designed for digital audiences."><div class="project-image"><span>YOUR<br>PROJECT 01</span></div><div class="project-info"><h3>Social Media Campaign</h3><p>Replace with a campaign description.</p></div></article>
-          <article class="project" data-category="design" data-title="Promotional Graphic" data-type="Graphic Design" data-description="A promotional visual built to communicate an offer quickly while keeping the brand presentation clean, memorable, and consistent."><div class="project-image"><span>YOUR<br>PROJECT 02</span></div><div class="project-info"><h3>Promotional Graphic</h3><p>Replace with a project description.</p></div></article>
-          <article class="project" data-category="branding" data-title="Brand Identity" data-type="Branding" data-description="A visual identity direction exploring typography, color, composition, and a cohesive look that can carry across digital touchpoints."><div class="project-image"><span>YOUR<br>PROJECT 03</span></div><div class="project-info"><h3>Brand Identity</h3><p>Replace with a project description.</p></div></article>
-          <article class="project" data-category="social" data-title="Content Series" data-type="Content Creation" data-description="A connected series of social assets designed to make a brand feel consistent across multiple posts and formats."><div class="project-image"><span>YOUR<br>PROJECT 04</span></div><div class="project-info"><h3>Content Series</h3><p>Replace with a project description.</p></div></article>
-          <article class="project" data-category="design" data-title="Poster Design" data-type="Graphic Design" data-description="A bold promotional composition designed to create hierarchy, grab attention, and communicate key information at a glance."><div class="project-image"><span>YOUR<br>PROJECT 05</span></div><div class="project-info"><h3>Poster Design</h3><p>Replace with a project description.</p></div></article>
-          <article class="project" data-category="branding" data-title="Visual Direction" data-type="Creative Direction" data-description="A creative direction concept bringing together visual references, layout decisions, typography, and tone into one recognizable system."><div class="project-image"><span>YOUR<br>PROJECT 06</span></div><div class="project-info"><h3>Visual Direction</h3><p>Replace with a project description.</p></div></article>
+          <article class="project" data-category="social" data-title="Social Media Campaign" data-type="Social Media"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
+          <article class="project" data-category="design" data-title="Promotional Graphic" data-type="Graphic Design"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
+          <article class="project" data-category="branding" data-title="Brand Identity" data-type="Branding"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
+          <article class="project" data-category="social" data-title="Content Series" data-type="Content Creation"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
+          <article class="project" data-category="design" data-title="Poster Design" data-type="Graphic Design"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
+          <article class="project" data-category="branding" data-title="Visual Direction" data-type="Creative Direction"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
         </div>
       </div>
     </section>
@@ -990,7 +990,7 @@
       <div class="modal-body">
         <small id="modalType">PROJECT TYPE</small>
         <h3 id="modalTitle">Project title</h3>
-        <p id="modalDescription">Project description</p>
+        <p id="modalDescription"></p>
         <div class="case-meta"><span>Creative direction</span><span>Design</span><span>Content</span></div>
       </div>
     </div>
@@ -1027,7 +1027,7 @@
       project.addEventListener('click', () => {
         modalTitle.textContent = project.dataset.title;
         modalType.textContent = project.dataset.type;
-        modalDescription.textContent = project.dataset.description;
+        modalDescription.textContent = project.dataset.description || "";
         modalVisual.textContent = project.dataset.title.split(' ').slice(0,2).join(' ').toUpperCase();
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
