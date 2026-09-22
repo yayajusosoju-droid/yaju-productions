@@ -414,6 +414,77 @@
       0%,100% { transform: translateY(0) rotate(24deg); }
       50% { transform: translateY(-18px) rotate(34deg); }
     }
+
+    /* ===== Creative Tools ===== */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      min-height: 190px;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 18px;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 18px 45px rgba(22,58,95,.10);
+      border-color: #b8ddf3;
+    }
+
+    .tool-logo {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+      transition: transform .4s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .tool-card:hover .tool-logo {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    .tool-card h3 {
+      font-size: 1.05rem;
+      letter-spacing: -.025em;
+    }
+
+    .tool-card p {
+      color: var(--muted);
+      font-size: .8rem;
+      margin-top: -10px;
+    }
+
+    body.dark .tool-card {
+      background: #10263a;
+      border-color: #23445c;
+    }
+
+    body.dark .tool-card:hover {
+      border-color: #3e7191;
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+    }
+
+    @media (max-width: 900px) {
+      .tools-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .tool-card { min-height: 170px; padding: 22px 16px; }
+      .tool-logo { width: 58px; height: 58px; }
+    }
+
     @media (max-width: 800px) {
       header { width: 96%; margin-top: 8px; }
       .hero { min-height: 76vh; }
@@ -856,7 +927,119 @@
       .custom-cursor { display: none; }
     }
 
+
+/* Skills / Experience / Highlights / Testimonials / CTA */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.skill-card{padding:24px;border:1px solid var(--line);background:var(--surface);border-radius:18px;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.skill-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 14px 35px rgba(0,0,0,.08)}
+.skill-icon{font-size:25px;margin-bottom:16px;display:block}
+.skill-card h3{margin:0 0 8px;font-size:17px}
+.skill-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.experience-list{display:grid;gap:14px;margin-top:28px}
+.experience-item{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:25px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.experience-year{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.experience-item h3{margin:0 0 7px;font-size:18px}
+.experience-item p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}
+.highlight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.highlight{padding:25px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.highlight strong{display:block;font-size:30px;line-height:1;margin-bottom:10px}
+.highlight span{color:var(--muted);font-size:14px;line-height:1.5}
+.testimonial-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+.testimonial{padding:28px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.testimonial p{margin:0 0 18px;font-size:15px;line-height:1.75}
+.testimonial small{color:var(--muted)}
+.cta-box{margin-top:28px;padding:44px;border-radius:24px;background:linear-gradient(135deg,#dff3ff,#8fd3ff);color:#163a5f;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.cta-box h2{margin:0 0 9px;font-size:clamp(28px,4vw,44px)}
+.cta-box p{margin:0;opacity:.86;max-width:600px;line-height:1.6}
+.cta-box .btn{background:#fff;color:#111;border-color:#fff}
+body.dark .skill-card:hover{box-shadow:0 14px 35px rgba(0,0,0,.25)}
+@media(max-width:900px){
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .highlight-grid{grid-template-columns:1fr}
+  .experience-item{grid-template-columns:1fr;gap:10px}
+}
+@media(max-width:600px){
+  .skills-grid,.testimonial-grid{grid-template-columns:1fr}
+  .cta-box{padding:30px;flex-direction:column;align-items:flex-start}
+}
+
+
+/* Accessible contrast + refined CTA */
+:root{--heading-contrast:#17121f;--body-contrast:#40364a;--accent-contrast:#5b00a8}
+body.dark{--heading-contrast:#fff;--body-contrast:#e7deef;--accent-contrast:#d7a8ff}
+h1,h2,h3,h4,h5,h6{color:var(--heading-contrast)}
+p,li,.section-intro,.skill-card p,.experience-item p,.highlight span,.testimonial small{color:var(--body-contrast)}
+.section-label,.experience-year{color:var(--accent-contrast)}
+header nav a,a{color:var(--heading-contrast)}
+header nav a:hover,a:hover{color:var(--accent-contrast)}
+.cta-box{position:relative;overflow:hidden;background:var(--surface);color:var(--heading-contrast);border:1px solid var(--line);box-shadow:0 18px 45px rgba(25,10,40,.10)}
+.cta-box:before{content:"";position:absolute;width:220px;height:220px;right:-70px;top:-100px;background:radial-gradient(circle,rgba(255,255,255,.30),transparent 68%);pointer-events:none}
+.cta-box h2,.cta-box p{position:relative;z-index:1;color:var(--heading-contrast)}
+.cta-box p{color:var(--body-contrast)}
+.cta-box .btn{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;min-width:150px;min-height:48px;padding:13px 22px;border-radius:999px;background:var(--accent);color:#fff!important;border:1px solid var(--accent);font-weight:700;text-decoration:none;box-shadow:0 10px 25px rgba(106,0,183,.22);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.cta-box .btn:hover{color:#fff!important;transform:translateY(-2px);box-shadow:0 14px 30px rgba(106,0,183,.30);background:#7b16c5}
+body.dark .cta-box{background:linear-gradient(135deg,#173a52,#245d80);color:#eef8ff;border-color:#315c76;box-shadow:0 18px 45px rgba(0,0,0,.25)}
+body.dark .cta-box .btn{background:#b084ff;border-color:#b084ff;color:#160d20!important;box-shadow:0 10px 25px rgba(176,132,255,.20)}
+body.dark .cta-box .btn:hover{background:#c49cff;border-color:#c49cff;color:#160d20!important}
+
+
+.tool-logo-link{display:flex;align-items:center;justify-content:center;width:72px;height:72px;margin:0 auto 18px;text-decoration:none;transition:transform .2s ease,opacity .2s ease}.tool-logo-link:hover{transform:translateY(-3px) scale(1.04);opacity:.85}.tool-logo-link .tool-logo{width:58px;height:58px;display:block;object-fit:contain}
 </style>
+
+<style id="tools-sizing-adjustment">
+  #tools .tools-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+  }
+
+  #tools .tool-card {
+    min-height: 230px;
+    padding: 30px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  #tools .tool-logo-link {
+    width: 88px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  #tools .tool-logo {
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+  }
+
+  #tools .tool-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+  }
+
+  #tools .tool-card p {
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    #tools .tools-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    #tools .tools-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -869,7 +1052,7 @@
         </a>
         <div style="display:flex;align-items:center;gap:10px;"><button class="theme-toggle" id="themeToggle" aria-label="Switch theme" title="Switch theme">☾</button><button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">☰</button></div>
         <div class="nav-links" id="navLinks">
-          <a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#contact">Contact</a>
+          <a href="#about">About</a><a href="#services">Services</a><a href="#tools">Tools</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#process">Process</a><a href="#contact">Contact</a>
         </div>
       </nav>
     </div>
@@ -920,9 +1103,112 @@
       </div>
     </section>
 
-    <section class="section" id="work">
+
+    <section class="section" id="tools">
       <div class="container">
-        <div class="section-head"><div><div class="section-label">03 / Portfolio</div><h2>Projects Uploading Soon</h2></div><p class="section-intro">Projects uploading soon.</p></div>
+        <div class="section-head">
+          <div>
+            <div class="section-label">03 / Tools</div>
+            <h2>Tools I use</h2>
+          </div>
+          <p class="section-intro">Creative tools I use for editing, design, illustration, video production, and content creation.</p>
+        </div>
+
+        <div class="tools-grid reveal">
+          <article class="tool-card">
+            <a class="tool-logo-link" href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener noreferrer" aria-label="Open adobephotoshop website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobephotoshop.svg" alt="Adobe Photoshop logo"></a>
+            <h3>Adobe Photoshop</h3>
+            <p>Photo editing & graphics</p>
+          </article>
+
+          <article class="tool-card">
+            <a class="tool-logo-link" href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener noreferrer" aria-label="Open adobeillustrator website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeillustrator.svg" alt="Adobe Illustrator logo"></a>
+            <h3>Adobe Illustrator</h3>
+            <p>Vector design & illustration</p>
+          </article>
+
+          <article class="tool-card">
+            <a class="tool-logo-link" href="https://www.canva.com/" target="_blank" rel="noopener noreferrer" aria-label="Open canva website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg" alt="Canva logo"></a>
+            <h3>Canva</h3>
+            <p>Social & visual content</p>
+          </article>
+
+          <article class="tool-card">
+            <a class="tool-logo-link" href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" rel="noopener noreferrer" aria-label="Open davinciresolve website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/davinciresolve.svg" alt="DaVinci Resolve logo"></a>
+            <h3>DaVinci Resolve</h3>
+            <p>Video editing & color</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">04 / Skills</div>
+        <h2>What I can create</h2>
+      </div>
+      <p class="section-intro">A mix of design, content, editing, and creative skills I bring into every project.</p>
+    </div>
+    <div class="skills-grid reveal">
+      <article class="skill-card"><span class="skill-icon">✦</span><h3>Graphic Design</h3><p>Posters, social media graphics, layouts, and visual assets.</p></article>
+      <article class="skill-card"><span class="skill-icon">◌</span><h3>Social Media</h3><p>Content planning, visual consistency, and platform-ready creative content.</p></article>
+      <article class="skill-card"><span class="skill-icon">▶</span><h3>Video Editing</h3><p>Short-form videos, reels, transitions, pacing, and visual storytelling.</p></article>
+      <article class="skill-card"><span class="skill-icon">◇</span><h3>Branding</h3><p>Visual direction, identity elements, and consistent brand presentation.</p></article>
+      <article class="skill-card"><span class="skill-icon">⌁</span><h3>Content Creation</h3><p>Creative concepts and digital content designed to communicate clearly.</p></article>
+      <article class="skill-card"><span class="skill-icon">◎</span><h3>Creative Direction</h3><p>Turning ideas into a clear visual direction from concept to final output.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">05 / Experience</div>
+        <h2>Creative background</h2>
+      </div>
+      <p class="section-intro">Experience built through organization work, creative production, leadership, and hands-on content projects.</p>
+    </div>
+    <div class="experience-list reveal">
+      <article class="experience-item">
+        <div class="experience-year">Creative Work</div>
+        <div><h3>Multimedia & Content Production</h3><p>Created and supported visual content for organizational social media, including editing, photography, and promotional materials.</p></div>
+      </article>
+      <article class="experience-item">
+        <div class="experience-year">Leadership</div>
+        <div><h3>JPCS Executive Leadership</h3><p>Worked with teams, coordinated activities, shared creative ideas, and helped turn event concepts into actual programs and materials.</p></div>
+      </article>
+      <article class="experience-item">
+        <div class="experience-year">Production</div>
+        <div><h3>Event & Digital Creative Projects</h3><p>Handled creative tasks across events and digital content, combining design, communication, organization, and problem-solving.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="highlights">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Highlights</div>
+        <h2>What I bring</h2>
+      </div>
+      <p class="section-intro">A creative approach shaped by collaboration, leadership, and attention to visual detail.</p>
+    </div>
+    <div class="highlight-grid reveal">
+      <div class="highlight"><strong>01</strong><span>Creative thinking — from a blank idea to a visual concept.</span></div>
+      <div class="highlight"><strong>02</strong><span>Team collaboration — communicating ideas and building with others.</span></div>
+      <div class="highlight"><strong>03</strong><span>Attention to detail — refining the small things that make visuals feel complete.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+      <div class="container">
+        <div class="section-head"><div><div class="section-label">06 / Portfolio</div><h2>Projects Uploading Soon</h2></div><p class="section-intro">Projects uploading soon.</p></div>
         <div class="featured-work reveal">
           <article class="featured-card">
             <div class="featured-content"><small>Featured project / 01</small><h3>Projects Uploading Soon</h3></div>
@@ -947,7 +1233,7 @@
 
     <section class="section" id="process">
       <div class="container">
-        <div class="section-head"><div><div class="section-label">04 / Process</div><h2>My process</h2></div><p class="section-intro">Simple, collaborative, and focused on making good work.</p></div>
+        <div class="section-head"><div><div class="section-label">07 / Process</div><h2>My process</h2></div><p class="section-intro">Simple, collaborative, and focused on making good work.</p></div>
         <div class="process reveal">
           <div class="step"><b>01</b><h3>Discover</h3><p>Understand your brand, audience, goals, and creative direction.</p></div>
           <div class="step"><b>02</b><h3>Plan</h3><p>Build concepts, content ideas, references, and a clear direction.</p></div>
@@ -962,7 +1248,36 @@
       </div>
     </section>
 
-    <section class="section" id="contact">
+    
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Feedback</div>
+        <h2>What people say</h2>
+      </div>
+      <p class="section-intro">A space for future feedback from clients, collaborators, and organizations.</p>
+    </div>
+    <div class="testimonial-grid reveal">
+      <article class="testimonial"><p>“Your feedback could go here once you have a client or collaborator testimonial.”</p><small>— Client / Collaborator</small></article>
+      <article class="testimonial"><p>“This section is ready for real feedback as your creative portfolio grows.”</p><small>— Future Project</small></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cta">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div>
+        <h2>Have an idea?</h2>
+        <p>Let’s turn it into something visual, memorable, and made with purpose.</p>
+      </div>
+      <a class="btn" href="#contact">Let's Create</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
       <div class="container">
         <div class="contact contact-form-wrap">
           <div class="contact-copy">
