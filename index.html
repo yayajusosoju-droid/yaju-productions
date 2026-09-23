@@ -416,9 +416,40 @@
     }
 
     /* ===== Creative Tools ===== */
+    .tools-group {
+      margin-top: 42px;
+    }
+
+    .tools-group:first-of-type {
+      margin-top: 10px;
+    }
+
+    .tools-group-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .tools-group-head h3 {
+      font-size: 1.25rem;
+      letter-spacing: -.03em;
+    }
+
+    .tools-group-head span {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
@@ -426,14 +457,14 @@
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      min-height: 190px;
-      padding: 28px 22px;
+      min-height: 185px;
+      padding: 26px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 18px;
+      gap: 16px;
       transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
     }
 
@@ -443,9 +474,15 @@
       border-color: #b8ddf3;
     }
 
+    .tool-logo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .tool-logo {
-      width: 68px;
-      height: 68px;
+      width: 64px;
+      height: 64px;
       object-fit: contain;
       transition: transform .4s cubic-bezier(.2,.8,.2,1);
     }
@@ -455,14 +492,14 @@
     }
 
     .tool-card h3 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       letter-spacing: -.025em;
     }
 
     .tool-card p {
       color: var(--muted);
-      font-size: .8rem;
-      margin-top: -10px;
+      font-size: .78rem;
+      margin-top: -9px;
     }
 
     body.dark .tool-card {
@@ -480,9 +517,11 @@
     }
 
     @media (max-width: 600px) {
+      .tools-group { margin-top: 32px; }
       .tools-grid { grid-template-columns: repeat(2, 1fr); }
-      .tool-card { min-height: 170px; padding: 22px 16px; }
-      .tool-logo { width: 58px; height: 58px; }
+      .tool-card { min-height: 165px; padding: 22px 16px; }
+      .tool-logo { width: 56px; height: 56px; }
+      .tools-group-head { align-items: flex-start; flex-direction: column; gap: 5px; }
     }
 
     @media (max-width: 800px) {
@@ -582,6 +621,194 @@
     .case-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
     .case-meta span { padding:8px 12px; border-radius:999px; background:#edf8ff; color:#35627f; font-size:.75rem; font-weight:750; }
 
+
+    /* ===== Separate Portfolio Categories ===== */
+    .portfolio-category-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 55px;
+    }
+
+    .portfolio-category-nav a {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 16px;
+      color: var(--muted);
+      background: var(--surface);
+      font-size: .82rem;
+      font-weight: 750;
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    }
+
+    .portfolio-category-nav a:hover {
+      transform: translateY(-3px);
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .portfolio-category {
+      margin-top: 70px;
+      scroll-margin-top: 105px;
+    }
+
+    .portfolio-category:first-of-type {
+      margin-top: 0;
+    }
+
+    .portfolio-category-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .portfolio-category-head > div {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .portfolio-category-number {
+      color: var(--accent-contrast);
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+    }
+
+    .portfolio-category-head h3 {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      letter-spacing: -.055em;
+      line-height: 1;
+    }
+
+    .portfolio-category-head p {
+      max-width: 390px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .portfolio-grid-four {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-image {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .project-image strong {
+      position: absolute;
+      left: 20px;
+      bottom: 18px;
+      z-index: 2;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      opacity: .72;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      border: 1px solid rgba(22,58,95,.22);
+      border-radius: 50%;
+      font-size: 1.4rem !important;
+      letter-spacing: 0 !important;
+      margin-bottom: 30px;
+      background: rgba(255,255,255,.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .project-video {
+      background: linear-gradient(135deg, #c7ecff, #8fd3ff) !important;
+    }
+
+    .project-design {
+      background: linear-gradient(135deg, #dff3ff, #b7dff2) !important;
+    }
+
+    .project-social {
+      background: linear-gradient(135deg, #e8f7ff, #acd8ef) !important;
+    }
+
+    .project-branding {
+      background: linear-gradient(135deg, #d2eaf7, #94c7e4) !important;
+    }
+
+    body.dark .portfolio-category-nav a {
+      background: #10263a;
+      border-color: #23445c;
+    }
+
+    body.dark .portfolio-category-nav a:hover {
+      background: #8fd3ff;
+      color: #10263a;
+      border-color: #8fd3ff;
+    }
+
+    body.dark .project-video {
+      background: linear-gradient(135deg, #173a52, #2d739a) !important;
+    }
+
+    body.dark .project-design {
+      background: linear-gradient(135deg, #183e57, #2e7098) !important;
+    }
+
+    body.dark .project-social {
+      background: linear-gradient(135deg, #14334a, #265f82) !important;
+    }
+
+    body.dark .project-branding {
+      background: linear-gradient(135deg, #193c53, #337b9f) !important;
+    }
+
+    @media (max-width: 800px) {
+      .portfolio-category-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .portfolio-category-head > div {
+        align-items: center;
+      }
+
+      .portfolio-grid-four {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .portfolio-category-nav {
+        gap: 7px;
+      }
+
+      .portfolio-category-nav a {
+        padding: 8px 12px;
+        font-size: .75rem;
+      }
+
+      .portfolio-category {
+        margin-top: 55px;
+      }
+
+      .portfolio-grid-four {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    .modal-visual { flex-direction: column; gap: 12px; text-align: center; }
+    .modal-visual .project-icon { margin: 0 auto 8px; }
+    .modal-visual strong { display: block; }
     /* Motion & interactive polish */
     body::before {
       content: "";
@@ -685,28 +912,23 @@
       font-size: clamp(.92rem, 1.8vw, 1.25rem);
       font-weight: 900;
       letter-spacing: -.045em;
-      background: linear-gradient(110deg, #102a43 0%, #4f9dca 28%, #ffffff 50%, #4f9dca 72%, #102a43 100%);
-      background-size: 220% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: logoShine 4s linear infinite;
+      color: #000000;
+      -webkit-text-fill-color: #000000;
+      text-shadow: 0 0 .01px #000000;
     }
     .logo-text span {
       color: inherit;
-      font-weight: 400;
-      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      -webkit-text-fill-color: inherit;
     }
     @keyframes logoShine {
       0% { background-position: 220% center; }
       100% { background-position: -220% center; }
     }
     body.dark .logo-text {
-      background: linear-gradient(110deg, #ffffff 0%, #8fd3ff 30%, #ffffff 50%, #8fd3ff 70%, #ffffff 100%);
-      background-size: 220% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #ffffff;
+      -webkit-text-fill-color: #ffffff;
+      text-shadow: 0 0 .01px #ffffff;
     }
     .logo-mark {
       opacity: 0;
@@ -979,11 +1201,21 @@ header nav a:hover,a:hover{color:var(--accent-contrast)}
 .cta-box .btn{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;min-width:150px;min-height:48px;padding:13px 22px;border-radius:999px;background:var(--accent);color:#fff!important;border:1px solid var(--accent);font-weight:700;text-decoration:none;box-shadow:0 10px 25px rgba(106,0,183,.22);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
 .cta-box .btn:hover{color:#fff!important;transform:translateY(-2px);box-shadow:0 14px 30px rgba(106,0,183,.30);background:#7b16c5}
 body.dark .cta-box{background:linear-gradient(135deg,#173a52,#245d80);color:#eef8ff;border-color:#315c76;box-shadow:0 18px 45px rgba(0,0,0,.25)}
-body.dark .cta-box .btn{background:#b084ff;border-color:#b084ff;color:#160d20!important;box-shadow:0 10px 25px rgba(176,132,255,.20)}
-body.dark .cta-box .btn:hover{background:#c49cff;border-color:#c49cff;color:#160d20!important}
+body.dark .cta-box .btn{background:#fff;border-color:#fff;color:#111!important;box-shadow:0 10px 25px rgba(0,0,0,.18)}
+body.dark .cta-box .btn:hover{background:#f2f2f2;border-color:#f2f2f2;color:#111!important}
 
 
 .tool-logo-link{display:flex;align-items:center;justify-content:center;width:72px;height:72px;margin:0 auto 18px;text-decoration:none;transition:transform .2s ease,opacity .2s ease}.tool-logo-link:hover{transform:translateY(-3px) scale(1.04);opacity:.85}.tool-logo-link .tool-logo{width:58px;height:58px;display:block;object-fit:contain}
+</style>
+
+<style id="capcut-logo-style">
+  /* Match CapCut to the colorful tool-logo treatment */
+  #tools .tool-logo.capcut-logo {
+    filter: invert(56%) sepia(78%) saturate(1088%) hue-rotate(158deg) brightness(95%) contrast(92%);
+  }
+  #tools .tool-card:hover .tool-logo.capcut-logo {
+    filter: invert(56%) sepia(78%) saturate(1088%) hue-rotate(158deg) brightness(105%) contrast(95%);
+  }
 </style>
 
 <style id="tools-sizing-adjustment">
@@ -1108,42 +1340,43 @@ body.dark .cta-box .btn:hover{background:#c49cff;border-color:#c49cff;color:#160
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="section-label">03 / Tools</div>
+            <div class="section-label">03 / Skills & Tools</div>
             <h2>Tools I use</h2>
           </div>
-          <p class="section-intro">Creative tools I use for editing, design, illustration, video production, and content creation.</p>
+          <p class="section-intro">The creative tools I use across design, video production, and social media content.</p>
         </div>
 
-        <div class="tools-grid reveal">
-          <article class="tool-card">
-            <a class="tool-logo-link" href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener noreferrer" aria-label="Open adobephotoshop website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobephotoshop.svg" alt="Adobe Photoshop logo"></a>
-            <h3>Adobe Photoshop</h3>
-            <p>Photo editing & graphics</p>
-          </article>
+        <div class="tools-group reveal">
+          <div class="tools-group-head"><h3>Design</h3><span>Visual Creation</span></div>
+          <div class="tools-grid">
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.canva.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Canva website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg" alt="Canva logo"></a><h3>Canva</h3><p>Social & visual content</p></article>
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener noreferrer" aria-label="Open Adobe Photoshop website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobephotoshop.svg" alt="Adobe Photoshop logo"></a><h3>Photoshop</h3><p>Photo editing & graphics</p></article>
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener noreferrer" aria-label="Open Adobe Illustrator website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeillustrator.svg" alt="Adobe Illustrator logo"></a><h3>Illustrator</h3><p>Vector design & illustration</p></article>
+          </div>
+        </div>
 
-          <article class="tool-card">
-            <a class="tool-logo-link" href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener noreferrer" aria-label="Open adobeillustrator website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeillustrator.svg" alt="Adobe Illustrator logo"></a>
-            <h3>Adobe Illustrator</h3>
-            <p>Vector design & illustration</p>
-          </article>
+        <div class="tools-group reveal">
+          <div class="tools-group-head"><h3>Video</h3><span>Editing & Production</span></div>
+          <div class="tools-grid">
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" rel="noopener noreferrer" aria-label="Open DaVinci Resolve website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/davinciresolve.svg" alt="DaVinci Resolve logo"></a><h3>DaVinci Resolve</h3><p>Video editing & color grading</p></article>
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.adobe.com/products/premiere.html" target="_blank" rel="noopener noreferrer" aria-label="Open Adobe Premiere Pro website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobepremierepro.svg" alt="Adobe Premiere Pro logo"></a><h3>Premiere Pro</h3><p>Professional video editing</p></article>
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.adobe.com/products/aftereffects.html" target="_blank" rel="noopener noreferrer" aria-label="Open Adobe After Effects website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeaftereffects.svg" alt="Adobe After Effects logo"></a><h3>After Effects</h3><p>Motion graphics & effects</p></article>
+          </div>
+        </div>
 
-          <article class="tool-card">
-            <a class="tool-logo-link" href="https://www.canva.com/" target="_blank" rel="noopener noreferrer" aria-label="Open canva website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg" alt="Canva logo"></a>
-            <h3>Canva</h3>
-            <p>Social & visual content</p>
-          </article>
-
-          <article class="tool-card">
-            <a class="tool-logo-link" href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" rel="noopener noreferrer" aria-label="Open davinciresolve website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/davinciresolve.svg" alt="DaVinci Resolve logo"></a>
-            <h3>DaVinci Resolve</h3>
-            <p>Video editing & color</p>
-          </article>
+        <div class="tools-group reveal">
+          <div class="tools-group-head"><h3>Social Media</h3><span>Content & Management</span></div>
+          <div class="tools-grid">
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Facebook website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/facebook.svg" alt="Facebook logo"></a><h3>Facebook</h3><p>Social content & community</p></article>
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg" alt="Instagram logo"></a><h3>Instagram</h3><p>Visual content & reels</p></article>
+            <article class="tool-card"><a class="tool-logo-link" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="Open TikTok website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tiktok.svg" alt="TikTok logo"></a><h3>TikTok</h3><p>Short-form content</p></article>
+            <article class="tool-card"><a class="tool-logo-link" href="https://business.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Meta Business Suite website"><img class="tool-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/meta.svg" alt="Meta logo"></a><h3>Meta Business Suite</h3><p>Scheduling & page management</p></article>
+          </div>
         </div>
       </div>
     </section>
 
-    
-<section class="section" id="skills">
+    <section class="section" id="skills">
   <div class="container">
     <div class="section-head">
       <div>
@@ -1208,25 +1441,127 @@ body.dark .cta-box .btn:hover{background:#c49cff;border-color:#c49cff;color:#160
 
 <section class="section" id="work">
       <div class="container">
-        <div class="section-head"><div><div class="section-label">06 / Portfolio</div><h2>Projects Uploading Soon</h2></div><p class="section-intro">Projects uploading soon.</p></div>
-        <div class="featured-work reveal">
-          <article class="featured-card">
-            <div class="featured-content"><small>Featured project / 01</small><h3>Projects Uploading Soon</h3></div>
-          </article>
-          <article class="featured-card">
-            <div class="featured-content"><small>Featured project / 02</small><h3>Projects Uploading Soon</h3></div>
-          </article>
+        <div class="section-head">
+          <div>
+            <div class="section-label">06 / Portfolio</div>
+            <h2>My Work</h2>
+          </div>
+          <p class="section-intro">A collection of videos, graphic designs, social media content, branding work, and other creative projects.</p>
         </div>
-        <div class="filters">
-          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="social">Social media</button><button class="filter" data-filter="design">Graphic design</button><button class="filter" data-filter="branding">Branding</button>
+
+        <div class="portfolio-category-nav reveal">
+          <a href="#videos">Videos</a>
+          <a href="#graphic-design">Graphic Designs</a>
+          <a href="#social-content">Social Media</a>
+          <a href="#branding-work">Branding</a>
         </div>
-        <div class="portfolio-grid reveal">
-          <article class="project" data-category="social" data-title="Social Media Campaign" data-type="Social Media"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
-          <article class="project" data-category="design" data-title="Promotional Graphic" data-type="Graphic Design"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
-          <article class="project" data-category="branding" data-title="Brand Identity" data-type="Branding"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
-          <article class="project" data-category="social" data-title="Content Series" data-type="Content Creation"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
-          <article class="project" data-category="design" data-title="Poster Design" data-type="Graphic Design"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
-          <article class="project" data-category="branding" data-title="Visual Direction" data-type="Creative Direction"><div class="project-image"><span>PROJECTS<br>UPLOADING SOON</span></div><div class="project-info"><h3>Projects Uploading Soon</h3></div></article>
+
+        <div class="portfolio-category reveal" id="videos">
+          <div class="portfolio-category-head">
+            <div>
+              <span class="portfolio-category-number">01</span>
+              <h3>Videos I Created</h3>
+            </div>
+            <p>Video edits, reels, event videos, short-form content, and visual storytelling.</p>
+          </div>
+
+          <div class="portfolio-grid portfolio-grid-four">
+            <article class="project" data-category="video" data-title="Video Project 01" data-type="Video Editing" data-description="Still thinking about the project description. Will upload the finished video soon.">
+              <div class="project-image project-video"><span class="project-icon">▶</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Video editing / still thinking about the description.</p></div>
+            </article>
+
+            <article class="project" data-category="video" data-title="Video Project 02" data-type="Short-Form Video" data-description="Still thinking about the project description. Will upload the finished video soon.">
+              <div class="project-image project-video"><span class="project-icon">▶</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Short-form content / still thinking about the description.</p></div>
+            </article>
+
+            <article class="project" data-category="video" data-title="Video Project 03" data-type="Content Video" data-description="Still thinking about the project description. Will upload the finished video soon.">
+              <div class="project-image project-video"><span class="project-icon">▶</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Content video / still thinking about the description.</p></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="portfolio-category reveal" id="graphic-design">
+          <div class="portfolio-category-head">
+            <div>
+              <span class="portfolio-category-number">02</span>
+              <h3>Graphic Designs</h3>
+            </div>
+            <p>Posters, social graphics, promotional materials, layouts, and other visual designs.</p>
+          </div>
+
+          <div class="portfolio-grid portfolio-grid-four">
+            <article class="project" data-category="design" data-title="Graphic Design 01" data-type="Graphic Design" data-description="Still thinking about the project description. Will upload the finished design soon.">
+              <div class="project-image project-design"><span>GD<br>01</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Graphic design / still thinking about the description.</p></div>
+            </article>
+
+            <article class="project" data-category="design" data-title="Graphic Design 02" data-type="Graphic Design" data-description="Still thinking about the project description. Will upload the finished design soon.">
+              <div class="project-image project-design"><span>GD<br>02</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Promotional design / still thinking about the description.</p></div>
+            </article>
+
+            <article class="project" data-category="design" data-title="Graphic Design 03" data-type="Graphic Design" data-description="Still thinking about the project description. Will upload the finished design soon.">
+              <div class="project-image project-design"><span>GD<br>03</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Social graphic / still thinking about the description.</p></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="portfolio-category reveal" id="social-content">
+          <div class="portfolio-category-head">
+            <div>
+              <span class="portfolio-category-number">03</span>
+              <h3>Social Media & Content</h3>
+            </div>
+            <p>Social media posts, content series, campaign assets, and platform-ready creative work.</p>
+          </div>
+
+          <div class="portfolio-grid portfolio-grid-four">
+            <article class="project" data-category="social" data-title="Social Media Project 01" data-type="Social Media Content" data-description="Still thinking about the project description. Will upload the finished work soon.">
+              <div class="project-image project-social"><span>SOCIAL<br>01</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Social media content / still thinking about the description.</p></div>
+            </article>
+
+            <article class="project" data-category="social" data-title="Social Media Project 02" data-type="Content Creation" data-description="Still thinking about the project description. Will upload the finished work soon.">
+              <div class="project-image project-social"><span>SOCIAL<br>02</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Content creation / still thinking about the description.</p></div>
+            </article>
+
+            <article class="project" data-category="social" data-title="Social Media Project 03" data-type="Social Media Campaign" data-description="Still thinking about the project description. Will upload the finished work soon.">
+              <div class="project-image project-social"><span>SOCIAL<br>03</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Campaign content / still thinking about the description.</p></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="portfolio-category reveal" id="branding-work">
+          <div class="portfolio-category-head">
+            <div>
+              <span class="portfolio-category-number">04</span>
+              <h3>Branding & Visual Identity</h3>
+            </div>
+            <p>Logos, visual direction, identity systems, and creative branding concepts.</p>
+          </div>
+
+          <div class="portfolio-grid portfolio-grid-four">
+            <article class="project" data-category="branding" data-title="Branding Project 01" data-type="Brand Identity" data-description="Still thinking about the project description. Will upload the finished branding project soon.">
+              <div class="project-image project-branding"><span>BRAND<br>01</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Brand identity / still thinking about the description.</p></div>
+            </article>
+
+            <article class="project" data-category="branding" data-title="Branding Project 02" data-type="Visual Identity" data-description="Still thinking about the project description. Will upload the finished branding project soon.">
+              <div class="project-image project-branding"><span>BRAND<br>02</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Visual identity / still thinking about the description.</p></div>
+            </article>
+
+            <article class="project" data-category="branding" data-title="Branding Project 03" data-type="Creative Direction" data-description="Still thinking about the project description. Will upload the finished branding project soon.">
+              <div class="project-image project-branding"><span>BRAND<br>03</span><strong>WILL UPLOAD SOON</strong></div>
+              <div class="project-info"><h3>Will upload soon</h3><p>Creative direction / still thinking about the description.</p></div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -1319,14 +1654,7 @@ body.dark .cta-box .btn:hover{background:#c49cff;border-color:#c49cff;color:#160
   <script>
     function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
     document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
-    const filters = document.querySelectorAll('.filter');
     const projects = document.querySelectorAll('.project');
-    filters.forEach(button => button.addEventListener('click', () => {
-      filters.forEach(b => b.classList.remove('active'));
-      button.classList.add('active');
-      const category = button.dataset.filter;
-      projects.forEach(project => project.style.display = category === 'all' || project.dataset.category === category ? '' : 'none');
-    }));
     document.getElementById('year').textContent = new Date().getFullYear();
 
 
@@ -1343,7 +1671,13 @@ body.dark .cta-box .btn:hover{background:#c49cff;border-color:#c49cff;color:#160
         modalTitle.textContent = project.dataset.title;
         modalType.textContent = project.dataset.type;
         modalDescription.textContent = project.dataset.description || "";
-        modalVisual.textContent = project.dataset.title.split(' ').slice(0,2).join(' ').toUpperCase();
+        modalVisual.innerHTML = project.dataset.category === 'video'
+          ? '<span class="project-icon">▶</span><strong>VIDEO</strong>'
+          : project.dataset.category === 'design'
+          ? '<strong>GRAPHIC DESIGN</strong>'
+          : project.dataset.category === 'social'
+          ? '<strong>SOCIAL MEDIA</strong>'
+          : '<strong>BRANDING</strong>';
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
       });
